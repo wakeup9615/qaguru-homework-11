@@ -13,7 +13,7 @@ import pages.RegistrationFormPage;
 
 public class TestBase {
     RegistrationFormPage registrationFormPage = new RegistrationFormPage();
-    //static CredentialsConfig config = ConfigFactory.create(CredentialsConfig.class);
+    static CredentialsConfig config = ConfigFactory.create(CredentialsConfig.class);
 
     @BeforeAll
     static void beforeAll() {
@@ -29,10 +29,12 @@ public class TestBase {
         Configuration.browserVersion = System.getProperty("browserVersion");
         Configuration.browserSize = System.getProperty("browserSize");
         String urlSelenoid = System.getProperty("urlSelenoid");
-//        String login = config.login();
-//        String password = config.login();
-//        Configuration.remote = String.format("https://%s:%s@%s", login, password, urlSelenoid);
-        //gradle clean test -DbaseUrl=https://demoqa.com -Dbrowser=chrome -DbrowserVersion=101 -DbrowserSize=1920x1080
+        String login = config.login();
+        String password = config.password();
+        Configuration.remote = String.format("https://%s:%s@%s", login, password, urlSelenoid);
+        System.out.println(Configuration.remote);
+        //gradle clean test -DbaseUrl=https://demoqa.com -Dbrowser=chrome -DbrowserVersion=100.0 -DbrowserSize=1920x1080 -DurlSelenoid=selenoid.autotests.cloud/wd/hub
+
     }
 
     @AfterEach
