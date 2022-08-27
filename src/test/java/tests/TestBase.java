@@ -32,9 +32,7 @@ public class TestBase {
         String login = config.login();
         String password = config.password();
         Configuration.remote = String.format("https://%s:%s@%s", login, password, urlSelenoid);
-        System.out.println(Configuration.remote);
         //gradle clean test -DbaseUrl=https://demoqa.com -Dbrowser=chrome -DbrowserVersion=100.0 -DbrowserSize=1920x1080 -DurlSelenoid=selenoid.autotests.cloud/wd/hub
-
     }
 
     @AfterEach
